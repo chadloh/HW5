@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Home-schooling during COVID-19</title>
+   	<script src="https://d3js.org/d3.v4.min.js"></script>
+   	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500" rel="stylesheet">
+   	<link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+
+    <style>
+
+		p {
+			font-family: 'Open Sans', sans-serif;
+			color:#353536;
+			font-size:14px;
+			font-weight:700;
+			line-height:1.8;
+			padding-bottom:500px;
+		}
+
+		svg {
+			width:100%;
+			height:600px;
+			padding-left:5%;
+			padding-right:50px;
+		}
+
+		h1 {
+      font-family: 'Staatliches';
+			font-size:60px;
+			font-weight:900;
+			line-height:0.9;
+		}
+		h2 {
+			font-size:20px;
+			font-weight:400;
+			line-height:1.0;
+		}
+		h3 {
+			font-size:10px;
+			font-weight:300;
+			line-height:1.5;
+		}
+
+    #wp, #mkc, #map {
+      position: -webkit-sticky;
+      position: sticky;
+      top: -1px;
+    }
+
+    .text1opacity, .text2opacity, .text3opacity {
+      font-size: 30px;
+      fill: blue;
+      opacity: 0;
+      transition: opacity 0.8s;
+      -webkit-transition: opacity 0.8s;
+    }
+
+    .active {
+      opacity: 1;
+    }
+
+	</style>
+</head>
+<body>
+  <main role="main" class="container" >
+     <div class="row">
+     	<div class="col-12">
+     		<br><br>
+     		<h1>HOME-SCHOOLING<br>DURING COVID-19</h1>
+        <h1> </h1>
+        <h2>Naroa Coretti Sanchez<br>Ayaka Yamashita<br>Hyun-Chae Chad Loh</h2>
+     		<hr>
+     	</div>
+     </div>
+     <div class="row">
+       <div class="col-4">
+         <br></br>
+         <p><b>2020</b> has really been a tough year.<br><br>
+           The COVID-19 pandemic has completely changed the way of living as we all know. Wearing a mask, back-to-back zoom meetings,
+           work from home, virtual birthday parties, socially distanced hangouts, and so on. Adjusting to the new “normal” was definitely a frustrating experience for most of us. </p>
+             <br></br>
+             <p id='text1'> “... Remote learning proved disastrous for many in the spring, as schools were forced to devise learning plans on the fly and struggled to connect students with devices and high-speed Internet.
+              Experts fear it could be another factor exacerbating an achievement gap that separates Black and Latino students from their White classmates.”<br>
+            Reference: <a href="https://www.washingtonpost.com/education/2020/09/25/nyc-schools-students-of-color/">Washington Post</a></p>
+              <br></br>
+       </div>
+       <div class="col-8">
+         <div id="wp"></div>
+       </div>
+       <div class="col-4">
+        <p id='text2'>The pandemic has also caused a large disruption to the education system, affecting 94% of the student population in the world. Distance learning tools like radio,
+          television, paper-based learning, and online learning are adopted to continue the education while practicing social distancing.
+          But distance learning showed limitations since many students were not equipped with devices or had access to high-speed internet.</p>
+          <br></br>
+          <p>As the daily new case numbers gets lower, the schools are considering reopening for full or partial in-person education. But some of the schools are remaining remote-only.
+           White students and students of color aren’t equally likely to live in a remote-only district.
+           Learning loss will probably be greatest among low-income, black, and hispanic students as they are less likely to have access to high-quality remote learning as seen from these charts.<br>
+           Reference: <a href="https://www.mckinsey.com/industries/public-and-social-sector/our-insights/covid-19-and-student-learning-in-the-united-states-the-hurt-could-last-a-lifetime">McKinsey</a>
+         </p>
+      </div>
+       <div class="col-8">
+         <div id="mkc"></div>
+       </div>
+       <div class="col-4">
+         <br></br>
+         <p>As internet access is crucial for online learning, access to Wifi hotspot is crucial for underprivileged children who doesn’t have internet access at home.
+           The map on the right shows the free Wifi hotspot location in New York City. <br><br>
+           Free Wifi hotspots are heavily installed in Manhattan while its only exists along major roads in other boroughs.
+         </p>
+         <br></br>
+       </div>
+       <div class="col-8">
+        <div id="map">
+        </div>
+       </div>
+     </div>
+  </main><!-- /.container -->
+</body>
+
+<script type="text/javascript">
+mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhZGxvaCIsImEiOiJja2dkejM3ejIwN3M1MnJ0OTFjaXp0dWkwIn0.2NM6sivklBFKtjRraSoJDg';
+
+var wp = d3.select("div#wp").append("svg")
+.attr("class", "text1opacity")
+
+wp.append("svg:image")
+.attr("x", 0)
+.attr("y", 100)
+.attr("height", 50)
+.attr("xlink:href", "img/wp.png")
+
+wp.append("svg:image")
+.attr("x", 0)
+.attr("y", 150)
+.attr("width", 600)
+.attr("xlink:href", "img/img-01.png")
+
+
+var mkc = d3.select("div#mkc").append("svg")
+.attr("class", "text2opacity")
+
+mkc.append("svg:image")
+.attr("x", 0)
+.attr("y", 100)
+.attr("height", 50)
+.attr("xlink:href", "img/mkc.png")
+
+mkc.append("svg:image")
+.attr("x", 0)
+.attr("y", 150)
+.attr("width", 600)
+.attr("xlink:href", "img/img-02.png")
+
+var map = d3.select("div#map").append("svg")
+
+var map = new mapboxgl.Map({
+  container: 'map', // container element id
+  style: 'mapbox://styles/chadloh/ckgp5xdvi0i3v19qm7wgj58v6',
+  center: [-73.962263, 40.707564], // initial map center in [lon, lat]
+  zoom: 9.8
+})
+
+
+// Load data
+map.on('load', function() {
+  // Add data sources:
+  map.addSource('complaints', {
+    'type': 'geojson',
+    'data': 'data/boston_service_requests.geojson',
+    'generateId': true // This ensures that all features have unique IDs
+  });
+
+  // Add layer to discplay data:
+  map.addLayer({
+    id: 'complaints_viz',
+    type: 'circle',
+    source: 'complaints',
+    paint: {
+      'circle-radius': 4,
+      'circle-color': [
+        'interpolate',
+        ['linear'],
+        ['number', ['get', 'response_time']],
+        0, '#ffeda0',
+        6, '#fd8d3c',
+        12, '#fc4e2a',
+        18, '#e31a1c',
+        24, '#bd0026'
+      ],
+      'circle-opacity': 0.6
+    },
+    });
+});
+
+//
+
+var controller = new ScrollMagic.Controller();
+
+new ScrollMagic.Scene({triggerElement: "#text1"})
+    .setClassToggle(".text1opacity", "active")
+    .addTo(controller)
+
+new ScrollMagic.Scene({triggerElement: "#text2"})
+    .setClassToggle(".text2opacity", "active")
+    .addTo(controller)
+
+</script>
+</body>
+</html>
