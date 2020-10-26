@@ -18,9 +18,10 @@
 			font-family: 'Open Sans', sans-serif;
 			color:#353536;
 			font-size:14px;
-			font-weight:700;
+			font-weight:600;
 			line-height:1.8;
-			padding-bottom:500px;
+			padding-top:100px;
+			padding-bottom:400px;
 		}
 
 		svg {
@@ -72,8 +73,7 @@
      <div class="row">
      	<div class="col-12">
      		<br><br>
-     		<h1>HOME-SCHOOLING<br>DURING COVID-19</h1>
-        <h1> </h1>
+     		<h1 style="color:#B42124">HOME-SCHOOLING</h1><h1>DURING COVID-19</h1>
         <h2>Naroa Coretti Sanchez<br>Ayaka Yamashita<br>Hyun-Chae Chad Loh</h2>
      		<hr>
      	</div>
@@ -81,12 +81,12 @@
      <div class="row">
        <div class="col-4">
          <br></br>
-         <p><b>2020</b> has really been a tough year.<br><br>
-           The COVID-19 pandemic has completely changed the way of living as we all know. Wearing a mask, back-to-back zoom meetings,
+         <p><b style="font-size:200%;">2020 </b> <a style="font-size:140%;"> has really been a tough year.</a><br><br>
+           The COVID-19 pandemic has completely changed the way of living. Wearing a mask, back-to-back zoom meetings,
            work from home, virtual birthday parties, socially distanced hangouts, and so on. Adjusting to the new “normal” was definitely a frustrating experience for most of us. </p>
              <br></br>
-             <p id='text1'> “... Remote learning proved disastrous for many in the spring, as schools were forced to devise learning plans on the fly and struggled to connect students with devices and high-speed Internet.
-              Experts fear it could be another factor exacerbating an achievement gap that separates Black and Latino students from their White classmates.”<br>
+             <p id='text1'> <i>“... Remote learning proved disastrous for many in the spring, as schools were forced to devise learning plans on the fly and struggled to connect students with devices and high-speed Internet.
+              Experts fear it could be another factor exacerbating an achievement gap that separates Black and Latino students from their White classmates.”</i><br>
             Reference: <a href="https://www.washingtonpost.com/education/2020/09/25/nyc-schools-students-of-color/">Washington Post</a></p>
               <br></br>
        </div>
@@ -132,7 +132,7 @@ var wp = d3.select("div#wp").append("svg")
 wp.append("svg:image")
 .attr("x", 0)
 .attr("y", 100)
-.attr("height", 50)
+.attr("height", 40)
 .attr("xlink:href", "img/wp.png")
 
 wp.append("svg:image")
@@ -148,7 +148,7 @@ var mkc = d3.select("div#mkc").append("svg")
 mkc.append("svg:image")
 .attr("x", 0)
 .attr("y", 100)
-.attr("height", 50)
+.attr("height", 40)
 .attr("xlink:href", "img/mkc.png")
 
 mkc.append("svg:image")
@@ -165,38 +165,6 @@ var map = new mapboxgl.Map({
   center: [-73.962263, 40.707564], // initial map center in [lon, lat]
   zoom: 9.8
 })
-
-
-// Load data
-map.on('load', function() {
-  // Add data sources:
-  map.addSource('complaints', {
-    'type': 'geojson',
-    'data': 'data/boston_service_requests.geojson',
-    'generateId': true // This ensures that all features have unique IDs
-  });
-
-  // Add layer to discplay data:
-  map.addLayer({
-    id: 'complaints_viz',
-    type: 'circle',
-    source: 'complaints',
-    paint: {
-      'circle-radius': 4,
-      'circle-color': [
-        'interpolate',
-        ['linear'],
-        ['number', ['get', 'response_time']],
-        0, '#ffeda0',
-        6, '#fd8d3c',
-        12, '#fc4e2a',
-        18, '#e31a1c',
-        24, '#bd0026'
-      ],
-      'circle-opacity': 0.6
-    },
-    });
-});
 
 //
 
